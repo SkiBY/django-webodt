@@ -7,6 +7,12 @@ from webodt.cache import CacheManager
 from webodt.converters import converter
 from webodt.helpers import get_mimetype
 
+from django import get_version
+if get_version()[0] >= 1 and get_version()[2] > 5:
+    from django.http import StreamingHttpResponse as HttpResponse
+
+
+
 import webodt
 
 def render_to(format, template_name,
